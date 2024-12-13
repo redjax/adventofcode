@@ -5,16 +5,10 @@ resolution-markers = [
     "python_full_version >= '3.12'",
 ]
 
-[manifest]
-members = [
-    "2024",
-    "advent-of-code",
-]
-
 [[package]]
-name = "2024"
+name = "advent-of-code"
 version = "0.1.0"
-source = { virtual = "years/2024" }
+source = { virtual = "." }
 dependencies = [
     { name = "ipykernel" },
     { name = "jupyter" },
@@ -38,27 +32,6 @@ requires-dist = [
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "pydantic", specifier = ">=2.10.3" },
 ]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "nox", specifier = ">=2024.10.9" },
-    { name = "pytest-xdist", specifier = ">=3.6.1" },
-    { name = "ruff", specifier = ">=0.8.2" },
-]
-
-[[package]]
-name = "advent-of-code"
-version = "0.1.0"
-source = { virtual = "." }
-
-[package.dev-dependencies]
-dev = [
-    { name = "nox" },
-    { name = "pytest-xdist" },
-    { name = "ruff" },
-]
-
-[package.metadata]
 
 [package.metadata.requires-dev]
 dev = [
