@@ -1,7 +1,8 @@
 from __future__ import annotations
-import logging
 
+import logging
 import socket
+
 import nox
 
 log = logging.getLogger("nox")
