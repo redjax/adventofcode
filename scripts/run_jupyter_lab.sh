@@ -1,5 +1,8 @@
 #!/bin/bash
 
+JUPYTER_TOKEN=${JUPYTER_TOKEN:-""}
+JUPYTER_PASSWORD=${JUPYTER_PASSWORD:-""}
+
 JUPYTER_ROOT=$(pwd)/.jupyter
 JUPYTER_CONFIG_ROOT="${JUPYTER_ROOT}/config"
 
@@ -20,10 +23,11 @@ if [ ! -d "${JUPYTERLAB_DIR}" ]; then
     fi
 fi
 
-echo "Starting Jupyter lab"
-
-uv run jupyter lab --config="${JUPYTER_CONFIG_DIR}/jupyter_lab_config.py" "$@" --ServerApp.token=''
-
+## Uncomment for debugging
 # uv run jupyter --config-dir
 # uv run jupyter --paths
-uv run jupyter lab path
+# uv run jupyter lab path
+
+echo "Starting Jupyter lab"
+
+uv run jupyter lab --config="${JUPYTER_CONFIG_DIR}/jupyter_lab_config.py" "$@" --ServerApp.token=$JUPYTER_TOKEN
