@@ -12,6 +12,8 @@ My solutions for [Advent of Code](https://adventofcode.com). Most solutions are 
 
 As of 12/14/24, this repository uses Jupyter Lab and Jupyter notebooks for solutions. You can start a Jupyter Lab environment in one of 2 ways; first, you can simply run the [`run_jupyter_lab.sh`](./scripts/run_jupyter_lab.sh) script, which sets Jupyter environment variables for the current session and launches it.
 
+When your Jupyter Lab environment is running, it will be accessible at `http://{server-ip}:8000` by default. If port `8000` is in use, the app will iterate over ports starting at `8000` using the `socket` Python library, and will bind to the first free/open port.
+
 Second, you can declare each of the environment variables below (`export $VarName=Value` on Linux/Mac, `${env:VarName}=Value` on Windows), then run `uv run jupyter lab --config="${JUPYTER_CONFIG_DIR}/jupyter_lab_config.py" "$@" --IdentityProvider.token=$JUPYTER_TOKEN`.
 
 | variable name | default/suggested value | purpose |
@@ -42,6 +44,25 @@ export JUPYTERLAB_SETTINGS_DIR=$(pwd)/.jupyter/lab \
 export JUPYTER_RUNTIME_DIR=$(pwd)/.jupyter/runtime \
 export JUPYTER_DATA_DIR=$(pwd)/.jupyter/data \
 uv run jupyter lab --config="${JUPYTER_CONFIG_DIR}/jupyter_lab_config.py" "$@" --ServerApp.token=$JUPYTER_TOKEN
+```
+
+### Automatic port binding
+
+The [Jupyter Lab configuration file](./.jupyter/config/jupyter_lab_config.py) uses the `find_free_port()` function shown below to bind the Jupyter Lab web UI to an available port, if port `8000` is in use.
+
+```python
+def find_free_port(start_port=8000) -> int:
+    """Find a free port starting from a specific port number."""
+    port = start_port
+    while True:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            try:
+                sock.bind(("0.0.0.0", port))
+                return port
+            except socket.error:
+                print(f"Port {port} is in use, trying the next port.")
+                port += 1
+
 ```
 
 ### Change starting path

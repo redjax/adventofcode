@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! command -v uv &> /dev/null; then
+  echo "Error: uv command not found. Please install uv and try again: https://docs.astral.sh/uv"
+  exit 1
+fi
+
 JUPYTER_TOKEN=${JUPYTER_TOKEN:-""}
 JUPYTER_PASSWORD=${JUPYTER_PASSWORD:-""}
 
@@ -27,6 +32,12 @@ fi
 # uv run jupyter --config-dir
 # uv run jupyter --paths
 # uv run jupyter lab path
+
+echo "Installing project"
+
+uv build
+uv sync --dev
+uv pip install .
 
 echo "Starting Jupyter lab"
 

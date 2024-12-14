@@ -5,11 +5,18 @@ resolution-markers = [
     "python_full_version >= '3.12'",
 ]
 
+[manifest]
+members = [
+    "advent-of-code",
+    "aoc-mod",
+]
+
 [[package]]
 name = "advent-of-code"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "aoc-mod" },
     { name = "aquirdturtle-collapsible-headings" },
     { name = "ipykernel" },
     { name = "jupyter" },
@@ -36,6 +43,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "aoc-mod", virtual = "aoc-mod" },
     { name = "aquirdturtle-collapsible-headings", specifier = ">=3.1.0" },
     { name = "ipykernel", specifier = ">=6.29.5" },
     { name = "jupyter", specifier = ">=1.1.1" },
@@ -103,6 +111,11 @@ sdist = { url = "https://files.pythonhosted.org/packages/f6/40/318e58f669b1a9e00
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a0/7a/4daaf3b6c08ad7ceffea4634ec206faeff697526421c20f07628c7372156/anyio-4.7.0-py3-none-any.whl", hash = "sha256:ea60c3723ab42ba6fff7e8ccb0488c898ec538ff4df1f1d5e642c3601d07e352", size = 93052 },
 ]
+
+[[package]]
+name = "aoc-mod"
+version = "0.1.0"
+source = { virtual = "aoc-mod" }
 
 [[package]]
 name = "appdirs"
