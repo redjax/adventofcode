@@ -30,4 +30,4 @@ fi
 
 echo "Starting Jupyter lab"
 
-uv run jupyter lab --config="${JUPYTER_CONFIG_DIR}/jupyter_lab_config.py" "$@" --ServerApp.token=$JUPYTER_TOKEN
+uv run jupyter lab --config="${JUPYTER_CONFIG_DIR}/jupyter_lab_config.py" "$@" --IdentityProvider.token=$JUPYTER_TOKEN --ServerApp.default_url="/lab?file-browser-path=/years"
