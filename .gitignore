@@ -195,7 +195,7 @@ cython_debug/
 #  commit notebook with output.
 jupyter_runtime
 # *.ipynb
-
+.virtual_documents
 
 ## Ignore mkdocs builds
 site/

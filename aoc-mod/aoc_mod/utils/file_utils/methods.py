@@ -3,7 +3,7 @@ from pathlib import Path
 from loguru import logger as log
 
 
-def load_inputs(inputs_file: t.Union[str, Path] = "inputs"):
+def load_inputs(inputs_file: t.Union[str, Path] = "./inputs"):
     """Load Advent of Code inputs from a file.
     
     Params:

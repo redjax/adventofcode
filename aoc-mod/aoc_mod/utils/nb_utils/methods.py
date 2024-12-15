@@ -1,5 +1,6 @@
 from IPython.display import display
 import pandas as pd
+from loguru import logger as log
 
 def display_df_without_index(df: pd.DataFrame, head: int | None = None, tail: int | None = None) -> None:
     """Display a Pandas DataFrame in a Jupyter notebook, without the DataFrame index column.
@@ -24,6 +25,6 @@ def display_df_without_index(df: pd.DataFrame, head: int | None = None, tail: in
             display(df.style.hide(axis="index"))
     except Exception as exc:
         msg: str = f"({type(exc)}) Error displaying Pandas DataFrame. Details: {exc}"
-        print(f"[ERROR] {msg}")
+        log.error(f"[ERROR] {msg}")
 
         raise exc
