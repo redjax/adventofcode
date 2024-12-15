@@ -23,6 +23,7 @@ dependencies = [
     "jupyter-fs>=0.3.1",
     "aoc-mod",
     "ipython>=8.30.0",
+    "python-lsp-server>=1.12.0",
 ]
 
 [tool.uv]
