@@ -22,6 +22,7 @@ dependencies = [
     "pydantic>=2.10.3",
     "jupyter-fs>=0.3.1",
     "aoc-mod",
+    "ipython>=8.30.0",
 ]
 
 [tool.uv]

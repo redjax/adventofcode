@@ -38,6 +38,7 @@ echo "Installing project"
 uv build
 uv sync --dev
 uv pip install .
+uv pip install -e ./aoc-mod
 
 echo "Starting Jupyter lab"
 
