@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "..",
+			"name": "Repo Root"
+		},
+		{
+			"path": "../.jupyter",
+			"name": "Jupyter Config"
+		},
+		{
+			"path": "../aoc-mod",
+			"name": "aoc_mode module"
+		},
+		{
+			"path": "../years",
+			"name": "years/"
+		},
+		{
+			"path": "../years/2024",
+			"name": "Current Year"
+		}
+	],
+	"settings": {}
+}
