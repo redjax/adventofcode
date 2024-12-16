@@ -10,11 +10,17 @@ My solutions for [Advent of Code](https://adventofcode.com). Most solutions are 
 
 ## Usage
 
-As of 12/14/24, this repository uses Jupyter Lab and Jupyter notebooks for solutions. You can start a Jupyter Lab environment in one of 2 ways; first, you can simply run the [`run_jupyter_lab.sh`](./scripts/run_jupyter_lab.sh) script, which sets Jupyter environment variables for the current session and launches it.
+As of 12/14/24, this repository uses Jupyter Lab and Jupyter notebooks for solutions. You can start a Jupyter Lab environment in one of 2 ways.
+
+### Method 1: Using the `uv` project manager
+
+If you are on Linux or Mac, you can simply run the [`run_jupyter_lab.sh`](./scripts/run_jupyter_lab.sh) script, which sets Jupyter environment variables for the current session and launches it.
 
 When your Jupyter Lab environment is running, it will be accessible at `http://{server-ip}:8000` by default. If port `8000` is in use, the app will iterate over ports starting at `8000` using the `socket` Python library, and will bind to the first free/open port.
 
-Second, you can declare each of the environment variables below (`export $VarName=Value` on Linux/Mac, `${env:VarName}=Value` on Windows), then run `uv run jupyter lab --config="${JUPYTER_CONFIG_DIR}/jupyter_lab_config.py" "$@" --IdentityProvider.token=$JUPYTER_TOKEN`.
+### Method 2: Use environment variables & run manually
+
+You can declare each of the environment variables below (`export $VarName=Value` on Linux/Mac, `${env:VarName}=Value` on Windows), then run `uv run jupyter lab --config="${JUPYTER_CONFIG_DIR}/jupyter_lab_config.py" "$@" --IdentityProvider.token=$JUPYTER_TOKEN`.
 
 | variable name | default/suggested value | purpose |
 | ------------- | ----------------------- | ------- |
@@ -33,20 +39,20 @@ Instead of exporting/setting these variables, you can also prepend the `uv run j
 
 ```shell
 ## Export Jupyter env vars and run lab command
-export JUPYTER_TOKEN="" \
-export JUPYTER_PASSWORD="" \
-export JUPYTER_ROOT=$(pwd)/.jupyter \
-export JUPYTER_CONFIG_ROOT=$(pwd)/.jupyter/config \
-export JUPYTER_CONFIG_DIR=$(pwd)/.jupyter \
-export JUPYTER_CONFIG_PATH=$(pwd)/.jupyter \
-export JUPYTERLAB_DIR=$(pwd)/.jupyter/lab \
-export JUPYTERLAB_SETTINGS_DIR=$(pwd)/.jupyter/lab \
-export JUPYTER_RUNTIME_DIR=$(pwd)/.jupyter/runtime \
-export JUPYTER_DATA_DIR=$(pwd)/.jupyter/data \
+JUPYTER_TOKEN="" \
+JUPYTER_PASSWORD="" \
+JUPYTER_ROOT=$(pwd)/.jupyter \
+JUPYTER_CONFIG_ROOT=$(pwd)/.jupyter/config \
+JUPYTER_CONFIG_DIR=$(pwd)/.jupyter \
+JUPYTER_CONFIG_PATH=$(pwd)/.jupyter \
+JUPYTERLAB_DIR=$(pwd)/.jupyter/lab \
+JUPYTERLAB_SETTINGS_DIR=$(pwd)/.jupyter/lab \
+JUPYTER_RUNTIME_DIR=$(pwd)/.jupyter/runtime \
+JUPYTER_DATA_DIR=$(pwd)/.jupyter/data \
 uv run jupyter lab --config="${JUPYTER_CONFIG_DIR}/jupyter_lab_config.py" "$@" --ServerApp.token=$JUPYTER_TOKEN
 ```
 
-### Automatic port binding
+## Automatic port binding
 
 The [Jupyter Lab configuration file](./.jupyter/config/jupyter_lab_config.py) uses the `find_free_port()` function shown below to bind the Jupyter Lab web UI to an available port, if port `8000` is in use.
 
@@ -65,7 +71,7 @@ def find_free_port(start_port=8000) -> int:
 
 ```
 
-### Change starting path
+## Change Jupyter Lab's starting path
 
 You can set the path Jupyter Lab opens in the web UI using `--ServerApp.default_url='/lab?file-browser-path=/path/to/open'`
 --ServerApp.default_url="/lab?file-browser-path=/years"
