@@ -1,12 +1,27 @@
-# Advent of Code
+# Advent of Code <!-- omit in toc -->
 
 My solutions for [Advent of Code](https://adventofcode.com). Most solutions are in Python, and may include a Jupyter notebook.
+
+# Table of Contents <!-- omit in toc -->
+- [Requirements](#requirements)
+- [Years](#years)
+- [Usage](#usage)
+  - [Method 1: Using the `uv` project manager](#method-1-using-the-uv-project-manager)
+  - [Method 2: Use environment variables \& run manually](#method-2-use-environment-variables--run-manually)
+- [Automatic port binding](#automatic-port-binding)
+- [Change Jupyter Lab's starting path](#change-jupyter-labs-starting-path)
 
 ## Requirements
 
 - [uv](https://docs.astral.sh/uv)
 - (Optional) [Python](https://python.org)
   - `uv` can handle installing Python for you. Run command with `uv --python` to use the `uv`-managed Python interpreter.
+
+## Years
+
+Click on a year below to see code/solutions for that year.
+
+- [2024](./years/2024/)
 
 ## Usage
 
@@ -75,7 +90,3 @@ def find_free_port(start_port=8000) -> int:
 
 You can set the path Jupyter Lab opens in the web UI using `--ServerApp.default_url='/lab?file-browser-path=/path/to/open'`
 --ServerApp.default_url="/lab?file-browser-path=/years"
-
-## Years
-
-- [2024](./years/2024/)
