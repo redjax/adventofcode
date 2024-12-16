@@ -18,7 +18,7 @@
             "comment",
             "string"
         ],
-        "kernelResponseTimeout": 600,
+        "kernelResponseTimeout": 200,
         "disableCompletionsFrom": [],
         "waitForBusyKernel": true,
         "theme": "vscode",
