@@ -1,6 +1,7 @@
 import typing as t
 from pathlib import Path
 from loguru import logger as log
+import json
 
 
 def load_inputs(inputs_file: t.Union[str, Path] = "./inputs"):
@@ -24,3 +25,23 @@ def load_inputs(inputs_file: t.Union[str, Path] = "./inputs"):
     except Exception as exc:
         log.error(f"{type(exc)} Error reading file {inputs_file}: {exc}")
         raise Exception(f"Error reading file {inputs_file}: {exc}")
+    
+    
+def save_results(results: dict, output_file: t.Union[str, Path] = "./solutions.json"):
+    """Save results to a JSON file."""
+    try:
+        json_data = json.dumps(results, indent=4)
+    except Exception as exc:
+        msg = f"({type(exc)}) Error dumping results dict to JSON. Details: {exc}"
+        log.error(msg)
+        
+        raise exc
+    
+    try:
+        with open(output_file, "w") as f:
+            f.write(json_data)
+    except Exception as exc:
+        msg = f"({type(exc)}) Error writing results to file {output_file}. Details: {exc}"
+        log.error(msg)
+        
+        raise exc

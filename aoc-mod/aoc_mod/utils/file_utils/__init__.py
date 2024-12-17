@@ -1,1 +1,1 @@
-from .methods import load_inputs
+from .methods import load_inputs, save_results
