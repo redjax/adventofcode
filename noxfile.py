@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import logging
-import socket
 from pathlib import Path
+import socket
 
 import nox
 
@@ -45,7 +45,8 @@ def ruff_lint(session: nox.Session):
     session.install("ruff")
     
     log.info("Checking code with ruff")
-    session.run("jupyter", "notebook", "--no-browser", "--ip=0.0.0.0", "--port=8000", "--NotebookApp.token=''", "--NotebookApp.password=''")
+    session.run("ruff", "check", "years", "--fix")
+    session.run("ruff", "check", "./noxfile.py", "--fix")
 
 
 @nox.session(name="start-jupyter")
@@ -53,4 +54,4 @@ def start_jupyter(session: nox.Session):
     install_uv_project(session=session, external=False)
     port = find_free_port()
     log.info(f"Starting Jupyter on port {port}")
-    session.run("jupyter", "notebook", "--port", str(port))
+    session.run("jupyter", "notebook", "--no-browser", "--ip=0.0.0.0", "--port=8000", "--NotebookApp.token=''", "--NotebookApp.password=''")
